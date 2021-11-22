@@ -167,6 +167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: 66cdbc619957dcd4d8105796e44ce311, type: 2}
+  massInput: {fileID: 740923996}
+  xPositionInput: {fileID: 336293188}
+  yPositionInput: {fileID: 1266430388}
+  zPositionInput: {fileID: 1706430196}
+  xVelocityInput: {fileID: 1308110244}
+  yVelocityInput: {fileID: 896091844}
+  zVelocityInput: {fileID: 474409032}
 --- !u!1 &123999588
 GameObject:
   m_ObjectHideFlags: 0
@@ -6115,7 +6122,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 643701270}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5614639
+  m_Size: 0.56146395
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
