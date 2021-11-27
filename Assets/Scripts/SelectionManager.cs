@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Object = System.Object;
 
@@ -15,14 +16,15 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private TMP_InputField xPositionInput;
     [SerializeField] private TMP_InputField yPositionInput;
     [SerializeField] private TMP_InputField zPositionInput;
+    [SerializeField] private TMP_InputField velocityValueInput;
     [SerializeField] private TMP_InputField xVelocityInput;
     [SerializeField] private TMP_InputField yVelocityInput;
     [SerializeField] private TMP_InputField zVelocityInput;
         
     private Transform currentSelection;
     private Material originMaterial;
+    private Planet currentPlanet;
 
-    // TODO: Onclick action for the apply button to edit planet
     void Update()
     {
         Renderer selectionRenderer;
@@ -53,23 +55,22 @@ public class SelectionManager : MonoBehaviour
                     selectionRenderer.material = highlightMaterial;
                     
                     // Get the planet from selection
-                    Planet planet = selection.gameObject.GetComponent<Planet>();
+                    currentPlanet = selection.gameObject.GetComponent<Planet>();
                     // Populate edit panel by planet values
-                    massInput.SetTextWithoutNotify(planet.Mass.ToString());
-                    xPositionInput.SetTextWithoutNotify(planet.Position.x.ToString());
-                    yPositionInput.SetTextWithoutNotify(planet.Position.y.ToString());
-                    zPositionInput.SetTextWithoutNotify(planet.Position.z.ToString());
-                    xVelocityInput.SetTextWithoutNotify(planet.VelocityDirection.x.ToString());
-                    yVelocityInput.SetTextWithoutNotify(planet.VelocityDirection.y.ToString());
-                    zVelocityInput.SetTextWithoutNotify(planet.VelocityDirection.z.ToString());
+                    massInput.SetTextWithoutNotify(currentPlanet.Mass.ToString());
+                    xPositionInput.SetTextWithoutNotify(currentPlanet.Position.x.ToString());
+                    yPositionInput.SetTextWithoutNotify(currentPlanet.Position.y.ToString());
+                    zPositionInput.SetTextWithoutNotify(currentPlanet.Position.z.ToString());
+                    velocityValueInput.SetTextWithoutNotify(currentPlanet.Velocity.ToString());
+                    xVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.x.ToString());
+                    yVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.y.ToString());
+                    zVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.z.ToString());
                 }
             }
             else
             {
-                // TODO: Ignore ui raycast
-                
-                // Delete latest selection
-                if (currentSelection != null)
+                // Delete latest selection if it isn't already null and the cursor is not covering ui
+                if (currentSelection != null && !EventSystem.current.IsPointerOverGameObject())
                 {
                     // Get the current selection renderer and change its material back to origin one
                     selectionRenderer = currentSelection.GetComponent<Renderer>();
@@ -77,6 +78,29 @@ public class SelectionManager : MonoBehaviour
                     currentSelection = null;
                 }
             }
+        }
+    }
+
+    // Onclick action for apply planet button in edit panel
+    public void ApplyPlanet()
+    {
+        try
+        {
+            // If no planet selected then return
+            if (currentPlanet == null) return;
+        
+            // Apply data to the planet here
+            currentPlanet.Mass = float.Parse(massInput.text);
+            currentPlanet.Position = new Vector3(float.Parse(xPositionInput.text), float.Parse(yPositionInput.text), float.Parse(zPositionInput.text));
+            currentPlanet.Velocity = float.Parse(velocityValueInput.text);
+            currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
+        }
+        catch (Exception e)
+        {
+            if (e.GetType() == Type.GetType("System.FormatException"))
+                Debug.Log("Format exception, use comas instead of dots and enter a number");
+            else
+                Debug.Log(e);
         }
     }
 }
