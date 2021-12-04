@@ -21,7 +21,7 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private TMP_InputField yVelocityInput;
     [SerializeField] private TMP_InputField zVelocityInput;
         
-    private Transform currentSelection;
+    public Transform currentSelection;
     private Material originMaterial;
     public Planet currentPlanet;
 

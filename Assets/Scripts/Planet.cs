@@ -9,8 +9,8 @@ public class Planet : MonoBehaviour
     static public float minMass = 1f;
     static public float maxMass = 2000f;
 
-    static public float minPos = 0f; // x,y,z
-    static public float maxPos = 5f;
+    static public float minPos = -30f; // x,y,z
+    static public float maxPos = 30f;
 
     static public float minVelocity = 0f;
     static public float maxVelocity = 10f;
@@ -45,7 +45,7 @@ public class Planet : MonoBehaviour
 
         set
         {
-            transform.position = _position = value;
+            rb.position = _position = value;
         }
     }
 
@@ -70,7 +70,7 @@ public class Planet : MonoBehaviour
     private void GenerateRandomProperties()
     {
         Mass = Random.Range(minMass, maxMass);
-       // Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
+        Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
         Velocity = 1; //to fix
         VelocityDirection = Vector3.one; //to fix
     }
@@ -91,7 +91,7 @@ public class Planet : MonoBehaviour
 
     public void UpdatePosition(float timeStep)
     {
-        rb.position += velocity * timeStep;
+        Position += velocity * timeStep;
 
     }
 }

@@ -13,7 +13,6 @@ public class ButtonImage : MonoBehaviour
     private void Awake()
     {
         _timeStep = Manager.TimeStep;
-        _orbit = FindObjectOfType<Orbit>();
     }
 
     public void ChangeImage()
@@ -22,14 +21,13 @@ public class ButtonImage : MonoBehaviour
         {
             button.image.sprite = stopSprite;
             Manager.TimeStep = 0;
-
-            _orbit.mainPhysics = false;
+            Orbit.mainPhysics = false;
         }
         else
         {
             button.image.sprite = playSprite;
             Manager.TimeStep = _timeStep;
-            _orbit.mainPhysics = true;
+            Orbit.mainPhysics = true;
 
         }
         

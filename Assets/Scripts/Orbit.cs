@@ -5,48 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class Orbit : MonoBehaviour
 {
-    private Scene parallelScene;
-    private PhysicsScene parallelPhysicsScene;
-
-    public Vector3 initalVelocity;
+    static public bool mainPhysics = true;
     public Planet mainObject;
-    public GameObject plane;
-    public GameObject plane2;
-    private LineRenderer lineRenderer;
-    private bool _rendered;
+    public Planet[] planets;
 
-    public bool mainPhysics = true;
+    private Scene _parallelScene;
+    private PhysicsScene _parallelPhysicsScene;
+    private LineRenderer _lineRenderer;
+    private bool _rendered;
+    private SelectionManager _selectionManager;
 
     void Start()
     {
         Physics.autoSimulation = false;
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 500;
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.positionCount = 500;
 
         CreateSceneParameters createSceneParameters = new CreateSceneParameters(LocalPhysicsMode.Physics3D);
-        parallelScene = SceneManager.CreateScene("ParallelScene", createSceneParameters);
-        parallelPhysicsScene = parallelScene.GetPhysicsScene();
+        _parallelScene = SceneManager.CreateScene("ParallelScene", createSceneParameters);
+        _parallelPhysicsScene = _parallelScene.GetPhysicsScene();
 
+        _selectionManager = FindObjectOfType<SelectionManager>();
     }
+
 
     void FixedUpdate()
     {
-        Debug.Log(_rendered);
         if (mainPhysics)
         {
-            lineRenderer.enabled = false;
+            _lineRenderer.enabled = false;
             _rendered = false;
             SceneManager.GetActiveScene().GetPhysicsScene().Simulate(0.01f);
         }
         else
         {
-            if (FindObjectOfType<SelectionManager>().currentPlanet)
+            if(mainObject!= _selectionManager.currentPlanet)
             {
-                mainObject = FindObjectOfType<SelectionManager>().currentPlanet;
+                _rendered = false;
             }
-            lineRenderer.enabled = true;
+            
+            mainObject = _selectionManager.currentPlanet;
+            planets = Manager.planets;
+            
             if (!_rendered)
-            {
+            {                
+                _lineRenderer.enabled = true;
                 SimulatePhysics();
             }
         }
@@ -56,43 +59,46 @@ public class Orbit : MonoBehaviour
     {
         if (mainObject != null)
         {
-            GameObject simulationObject = Instantiate(mainObject.gameObject);
-            GameObject simulationPlane = Instantiate(plane);
-            GameObject simulationPlane2 = Instantiate(plane2);
+            GameObject[] simulationGameObjects = new GameObject[planets.Length];
+            Planet[] simulationPlanets = new Planet[planets.Length];
 
-            SceneManager.MoveGameObjectToScene(simulationObject, parallelScene);
-            SceneManager.MoveGameObjectToScene(simulationPlane, parallelScene);
-            SceneManager.MoveGameObjectToScene(simulationPlane2, parallelScene);
-
-            simulationObject.GetComponent<Planet>().velocity = mainObject.GetComponent<Planet>().velocity;
-            simulationObject.GetComponent<Planet>().Mass = mainObject.GetComponent<Planet>().Mass;
-            simulationPlane.GetComponent<Planet>().velocity = plane.GetComponent<Planet>().velocity;
-            simulationPlane.GetComponent<Planet>().Mass = plane.GetComponent<Planet>().Mass;
-            simulationPlane2.GetComponent<Planet>().velocity = plane2.GetComponent<Planet>().velocity;
-            simulationPlane2.GetComponent<Planet>().Mass = plane2.GetComponent<Planet>().Mass;
-
-            Planet[] simplanet = { simulationPlane.GetComponent<Planet>(), simulationObject.GetComponent<Planet>(), simulationPlane2.GetComponent<Planet>() };
-
-            for (int i = 0; i < lineRenderer.positionCount; i++)
+            for (int i = 0; i < planets.Length; i++)
             {
-                parallelPhysicsScene.Simulate(0.01f);
-                for (int j = 0; j < simplanet.Length; j++)
-                {
-                    simplanet[j].UpdateVelocity(simplanet, 0.01f);
-                }
-
-                for (int j = 0; j < simplanet.Length; j++)
-                {
-                    simplanet[j].UpdatePosition(0.01f);
-                }
-                //simulationObject.GetComponent<Planet>().UpdateVelocity(simplanet, 0.01f);
-                //simulationObject.GetComponent<Planet>().UpdatePosition(0.01f);
-
-                lineRenderer.SetPosition(i, simulationObject.GetComponent<Planet>().rb.position);
+                simulationGameObjects[i] = Instantiate(planets[i].gameObject);
+                SceneManager.MoveGameObjectToScene(simulationGameObjects[i], _parallelScene);
+                simulationGameObjects[i].GetComponent<Planet>().velocity = planets[i].GetComponent<Planet>().velocity;
+                simulationGameObjects[i].GetComponent<Planet>().Mass = planets[i].GetComponent<Planet>().Mass;
+                simulationGameObjects[i].GetComponent<Planet>().Position = planets[i].GetComponent<Planet>().Position;
+                simulationPlanets[i] = simulationGameObjects[i].GetComponent<Planet>();
             }
-            Destroy(simulationObject);
-            Destroy(simulationPlane);
-            Destroy(simulationPlane2);
+
+            for (int i = 0; i < _lineRenderer.positionCount; i++)
+            {
+                _parallelPhysicsScene.Simulate(0.01f);
+
+                for (int j = 0; j < simulationPlanets.Length; j++)
+                {
+                    simulationPlanets[j].UpdateVelocity(simulationPlanets, 0.01f);
+                }
+
+                for (int j = 0; j < simulationPlanets.Length; j++)
+                {
+                    simulationPlanets[j].UpdatePosition(0.01f);
+                }
+
+                for (int k = 0; k < simulationPlanets.Length; k++)
+                {
+                    if (planets[k].gameObject == mainObject.gameObject)
+                    {
+                        _lineRenderer.SetPosition(i, simulationPlanets[k].Position);
+                    }
+                }               
+            }
+
+            foreach (var item in simulationGameObjects)
+            {
+                Destroy(item);
+            }
 
             _rendered = true;
         }
