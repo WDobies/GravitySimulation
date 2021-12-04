@@ -23,7 +23,7 @@ public class SelectionManager : MonoBehaviour
         
     private Transform currentSelection;
     private Material originMaterial;
-    private Planet currentPlanet;
+    public Planet currentPlanet;
 
     void Update()
     {

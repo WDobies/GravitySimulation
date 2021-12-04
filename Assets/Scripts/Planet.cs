@@ -22,8 +22,21 @@ public class Planet : MonoBehaviour
 
     private Vector3 _position;
     private float _currentRadius;
+    private float _mass;
+    public Rigidbody rb;
 
-    public float Mass { get; set; } // 10^24 kg (1 - 2000) range 
+    public float Mass 
+    { get => _mass; 
+
+      set 
+        {
+            rb.mass = _mass = value;
+        } 
+    } // 10^24 kg (1 - 2000) range 
+
+    public Vector3 velocity { get; set; }
+    public Vector3 initialVelocity;
+
     public float Velocity { get; set; } // km/s
     public Vector3 VelocityDirection { get; set; } //rotation
     public Vector3 Position
@@ -38,6 +51,9 @@ public class Planet : MonoBehaviour
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        rb.mass = _mass;
+        velocity = initialVelocity;
         GenerateRandomProperties();
     }
 
@@ -54,9 +70,28 @@ public class Planet : MonoBehaviour
     private void GenerateRandomProperties()
     {
         Mass = Random.Range(minMass, maxMass);
-        Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
+       // Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
         Velocity = 1; //to fix
         VelocityDirection = Vector3.one; //to fix
     }
 
+    public void UpdateVelocity(Planet[] allPlanets, float timeStep)
+    {
+        foreach (var planet in allPlanets)
+        {
+            if(planet != this)
+            {
+                float sqrDst = (planet.rb.position - rb.position).sqrMagnitude;
+                Vector3 forceDir = (planet.rb.position - rb.position).normalized; 
+                Vector3 acceleration = forceDir * Manager.GravityConstant * planet._mass / sqrDst;  //gravity Const
+                velocity += acceleration * timeStep;
+            }
+        }
+    }
+
+    public void UpdatePosition(float timeStep)
+    {
+        rb.position += velocity * timeStep;
+
+    }
 }
