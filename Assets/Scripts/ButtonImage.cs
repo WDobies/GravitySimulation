@@ -28,7 +28,6 @@ public class ButtonImage : MonoBehaviour
             button.image.sprite = playSprite;
             Manager.TimeStep = _timeStep;
             Orbit.mainPhysics = true;
-
         }
         
     }

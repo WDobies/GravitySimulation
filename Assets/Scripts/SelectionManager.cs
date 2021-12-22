@@ -62,9 +62,9 @@ public class SelectionManager : MonoBehaviour
                     yPositionInput.SetTextWithoutNotify(currentPlanet.Position.y.ToString());
                     zPositionInput.SetTextWithoutNotify(currentPlanet.Position.z.ToString());
                     velocityValueInput.SetTextWithoutNotify(currentPlanet.Velocity.ToString());
-                    xVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.x.ToString());
-                    yVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.y.ToString());
-                    zVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.z.ToString());
+                   // xVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.x.ToString());
+                   // yVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.y.ToString());
+                   // zVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.z.ToString());
                 }
             }
             else
@@ -92,8 +92,8 @@ public class SelectionManager : MonoBehaviour
             // Apply data to the planet here
             currentPlanet.Mass = float.Parse(massInput.text);
             currentPlanet.Position = new Vector3(float.Parse(xPositionInput.text), float.Parse(yPositionInput.text), float.Parse(zPositionInput.text));
-            currentPlanet.Velocity = float.Parse(velocityValueInput.text);
-            currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
+           // currentPlanet.Velocity = float.Parse(velocityValueInput.text);
+           // currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
         }
         catch (Exception e)
         {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatePlanet : ICreate
+public class CreatePlanet : MonoBehaviour
 {
-    public override void Create()
+    public void Create()
     {
         GameObject planet = ObjectPool.Instance.GetPooledObject();
         if (planet)

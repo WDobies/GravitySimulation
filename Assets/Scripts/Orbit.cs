@@ -31,11 +31,11 @@ public class Orbit : MonoBehaviour
 
     void FixedUpdate()
     {
+        SceneManager.GetActiveScene().GetPhysicsScene().Simulate(0.01f);
         if (mainPhysics)
         {
             _lineRenderer.enabled = false;
-            _rendered = false;
-            SceneManager.GetActiveScene().GetPhysicsScene().Simulate(0.01f);
+            _rendered = false;           
         }
         else
         {
@@ -66,7 +66,7 @@ public class Orbit : MonoBehaviour
             {
                 simulationGameObjects[i] = Instantiate(planets[i].gameObject);
                 SceneManager.MoveGameObjectToScene(simulationGameObjects[i], _parallelScene);
-                simulationGameObjects[i].GetComponent<Planet>().velocity = planets[i].GetComponent<Planet>().velocity;
+                simulationGameObjects[i].GetComponent<Planet>().Velocity = planets[i].GetComponent<Planet>().Velocity;
                 simulationGameObjects[i].GetComponent<Planet>().Mass = planets[i].GetComponent<Planet>().Mass;
                 simulationGameObjects[i].GetComponent<Planet>().Position = planets[i].GetComponent<Planet>().Position;
                 simulationPlanets[i] = simulationGameObjects[i].GetComponent<Planet>();

@@ -13,7 +13,6 @@ public class Manager : MonoBehaviour
     public static Manager Instance 
     {
         get => _instance;
-
     }
 
     public static void RefreshPlanetArray()
@@ -32,7 +31,6 @@ public class Manager : MonoBehaviour
         {
             planets[i].UpdatePosition(TimeStep);
         }
-
     }
 
     private void Awake()
