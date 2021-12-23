@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Orbit : MonoBehaviour
 {
     static public bool mainPhysics = true;
+    static public bool applied = false;
     public Planet mainObject;
     public Planet[] planets;
 
@@ -47,9 +48,10 @@ public class Orbit : MonoBehaviour
             mainObject = _selectionManager.currentPlanet;
             planets = Manager.planets;
             
-            if (!_rendered)
+            if (!_rendered || applied)
             {                
                 _lineRenderer.enabled = true;
+                applied = false;
                 SimulatePhysics();
             }
         }

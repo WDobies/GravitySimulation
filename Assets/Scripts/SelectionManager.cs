@@ -92,8 +92,9 @@ public class SelectionManager : MonoBehaviour
             // Apply data to the planet here
             currentPlanet.Mass = float.Parse(massInput.text);
             currentPlanet.Position = new Vector3(float.Parse(xPositionInput.text), float.Parse(yPositionInput.text), float.Parse(zPositionInput.text));
-           // currentPlanet.Velocity = float.Parse(velocityValueInput.text);
-           // currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
+            // currentPlanet.Velocity = float.Parse(velocityValueInput.text);
+            // currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
+            Orbit.applied = true;
         }
         catch (Exception e)
         {
