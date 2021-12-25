@@ -3086,8 +3086,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704bf1bcaad8b7043b82b3d873da2086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sensivity: {x: 2000, y: -2000}
-  _scrollSensivity: 100
+  maxMouseSensivity: 1500
+  minMouseSensivity: 500
+  mouseAcceleration: 10
+  minScrollSensivity: 50
+  scrollAcceleration: 3
 --- !u!1 &966769142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6358,7 +6361,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 66cdbc619957dcd4d8105796e44ce311, type: 2}
+  - {fileID: 2100000, guid: d75b8f41e959450c84ac6e967084d3e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6402,7 +6405,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 0.923081, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -6997,7 +7000,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 643701270}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.5154368
+  m_Size: 0.5154369
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
