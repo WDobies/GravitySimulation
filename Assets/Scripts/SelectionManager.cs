@@ -13,17 +13,59 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private Material highlightMaterial;
     // UI references
     [SerializeField] private TMP_InputField massInput;
+    [SerializeField] private Slider massSlider;
     [SerializeField] private TMP_InputField xPositionInput;
+    [SerializeField] private Slider xPositionSlider;
     [SerializeField] private TMP_InputField yPositionInput;
+    [SerializeField] private Slider yPositionSlider;
     [SerializeField] private TMP_InputField zPositionInput;
-    [SerializeField] private TMP_InputField velocityValueInput;
+    [SerializeField] private Slider zPositionSlider;
     [SerializeField] private TMP_InputField xVelocityInput;
+    [SerializeField] private Slider xVelocitySlider;
     [SerializeField] private TMP_InputField yVelocityInput;
+    [SerializeField] private Slider yVelocitySlider;
     [SerializeField] private TMP_InputField zVelocityInput;
-        
+    [SerializeField] private Slider zVelocitySlider;
+
     public Transform currentSelection;
     private Material originMaterial;
     public Planet currentPlanet;
+
+    private void Start()
+    {
+        // set sliders min and max values here in code so there is no need to manually set it every time we change ranges
+        // register listeners for sliders
+        // mass range
+        massSlider.minValue = Planet.minMass;
+        massSlider.maxValue = Planet.maxMass;
+        massSlider.onValueChanged.AddListener(delegate{OnMassSliderChanged();});
+        
+        // position range
+        xPositionSlider.minValue = Planet.minPos;
+        xPositionSlider.maxValue = Planet.maxPos;
+        xPositionSlider.onValueChanged.AddListener(delegate{OnXPosSliderChanged();});
+
+        yPositionSlider.minValue = Planet.minPos;
+        yPositionSlider.maxValue = Planet.maxPos;
+        yPositionSlider.onValueChanged.AddListener(delegate{OnYPosSliderChanged();});
+
+        zPositionSlider.minValue = Planet.minPos;
+        zPositionSlider.maxValue = Planet.maxPos;
+        zPositionSlider.onValueChanged.AddListener(delegate{OnZPosSliderChanged();});
+
+        // velocity range
+        xVelocitySlider.minValue = Planet.minVelocity;
+        xVelocitySlider.maxValue = Planet.maxVelocity;
+        xVelocitySlider.onValueChanged.AddListener(delegate{OnXVelocitySliderChanged();});
+
+        yVelocitySlider.minValue = Planet.minVelocity;
+        yVelocitySlider.maxValue = Planet.maxVelocity;
+        yVelocitySlider.onValueChanged.AddListener(delegate{OnYVelocitySliderChanged();});
+
+        zVelocitySlider.minValue = Planet.minVelocity;
+        zVelocitySlider.maxValue = Planet.maxVelocity;
+        zVelocitySlider.onValueChanged.AddListener(delegate{OnZVelocitySliderChanged();});
+    }
 
     void Update()
     {
@@ -61,10 +103,9 @@ public class SelectionManager : MonoBehaviour
                     xPositionInput.SetTextWithoutNotify(currentPlanet.Position.x.ToString());
                     yPositionInput.SetTextWithoutNotify(currentPlanet.Position.y.ToString());
                     zPositionInput.SetTextWithoutNotify(currentPlanet.Position.z.ToString());
-                    velocityValueInput.SetTextWithoutNotify(currentPlanet.Velocity.ToString());
-                   // xVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.x.ToString());
-                   // yVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.y.ToString());
-                   // zVelocityInput.SetTextWithoutNotify(currentPlanet.VelocityDirection.z.ToString());
+                    xVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.x.ToString());
+                    yVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.y.ToString());
+                    zVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.z.ToString());
                 }
             }
             else
@@ -92,8 +133,7 @@ public class SelectionManager : MonoBehaviour
             // Apply data to the planet here
             currentPlanet.Mass = float.Parse(massInput.text);
             currentPlanet.Position = new Vector3(float.Parse(xPositionInput.text), float.Parse(yPositionInput.text), float.Parse(zPositionInput.text));
-            // currentPlanet.Velocity = float.Parse(velocityValueInput.text);
-            // currentPlanet.VelocityDirection = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
+            currentPlanet.Velocity = new Vector3(float.Parse(xVelocityInput.text), float.Parse(yVelocityInput.text), float.Parse(zVelocityInput.text));
             Orbit.applied = true;
         }
         catch (Exception e)
@@ -103,5 +143,35 @@ public class SelectionManager : MonoBehaviour
             else
                 Debug.Log(e);
         }
+    }
+
+    // Custom listeners for sliders which will change input text fields
+    public void OnMassSliderChanged()
+    {
+        massInput.SetTextWithoutNotify(massSlider.value.ToString());
+    }
+    public void OnXPosSliderChanged()
+    {
+        xPositionInput.SetTextWithoutNotify(xPositionSlider.value.ToString());
+    }
+    public void OnYPosSliderChanged()
+    {
+        yPositionInput.SetTextWithoutNotify(yPositionSlider.value.ToString());
+    }
+    public void OnZPosSliderChanged()
+    {
+        zPositionInput.SetTextWithoutNotify(zPositionSlider.value.ToString());
+    }
+    public void OnXVelocitySliderChanged()
+    {
+        xVelocityInput.SetTextWithoutNotify(xVelocitySlider.value.ToString());
+    }
+    public void OnYVelocitySliderChanged()
+    {
+        yVelocityInput.SetTextWithoutNotify(yVelocitySlider.value.ToString());
+    }
+    public void OnZVelocitySliderChanged()
+    {
+        zVelocityInput.SetTextWithoutNotify(zVelocitySlider.value.ToString());
     }
 }
