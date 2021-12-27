@@ -4239,7 +4239,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8801,7 +8801,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8925,7 +8925,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 643701271}
   m_HandleRect: {fileID: 643701270}
   m_Direction: 2
-  m_Value: 0.99999845
+  m_Value: 0.999999
   m_Size: 0.7749671
   m_NumberOfSteps: 0
   m_OnValueChanged:
