@@ -100,12 +100,25 @@ public class SelectionManager : MonoBehaviour
                     currentPlanet = selection.gameObject.GetComponent<Planet>();
                     // Populate edit panel by planet values
                     massInput.SetTextWithoutNotify(currentPlanet.Mass.ToString());
+                    massSlider.SetValueWithoutNotify(currentPlanet.Mass);
+                    
                     xPositionInput.SetTextWithoutNotify(currentPlanet.Position.x.ToString());
+                    xPositionSlider.SetValueWithoutNotify(currentPlanet.Position.x);
+                    
                     yPositionInput.SetTextWithoutNotify(currentPlanet.Position.y.ToString());
+                    yPositionSlider.SetValueWithoutNotify(currentPlanet.Position.y);
+
                     zPositionInput.SetTextWithoutNotify(currentPlanet.Position.z.ToString());
+                    zPositionSlider.SetValueWithoutNotify(currentPlanet.Position.z);
+
                     xVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.x.ToString());
+                    xVelocitySlider.SetValueWithoutNotify(currentPlanet.Velocity.x);
+
                     yVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.y.ToString());
+                    yVelocitySlider.SetValueWithoutNotify(currentPlanet.Velocity.y);
+
                     zVelocityInput.SetTextWithoutNotify(currentPlanet.Velocity.z.ToString());
+                    zVelocitySlider.SetValueWithoutNotify(currentPlanet.Velocity.z);
                 }
             }
             else
