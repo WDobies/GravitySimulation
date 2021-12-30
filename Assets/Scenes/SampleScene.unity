@@ -2732,7 +2732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Addplanet
+  m_Text: 
 --- !u!222 &601950755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4927,7 +4927,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1131020182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6419,7 +6419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -624, y: 27.452}
+  m_AnchoredPosition: {x: -624, y: 27.452026}
   m_SizeDelta: {x: -1510.004, y: -1108.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432313373
@@ -6996,8 +6996,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 00a1b5c86f31d1140b5f32e36c51293a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7256,8 +7256,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b5e7c99f26ccc2c4aa076638005a21ab, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
