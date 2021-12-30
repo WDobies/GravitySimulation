@@ -24,7 +24,7 @@ public class Manager : MonoBehaviour
     {
         for (int i = 0; i < planets.Length; i++)
         {
-            planets[i].UpdateVelocity (planets, TimeStep);
+            planets[i].UpdateVelocity(planets, TimeStep);
         }
 
         for (int i = 0; i < planets.Length; i++)

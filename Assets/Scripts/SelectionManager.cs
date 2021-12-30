@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Object = System.Object;
 
 public class SelectionManager : MonoBehaviour
 {
