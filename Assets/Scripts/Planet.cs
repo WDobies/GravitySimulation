@@ -15,13 +15,10 @@ public class Planet : MonoBehaviour
     static public float minVelocity = 0f;
     static public float maxVelocity = 10f;
 
-    static public float minVelocityDirction = 0f; // x,y,z
-    static public float maxVelocityDirction = 360f;
-
     #endregion
 
     private Vector3 _position;
-    private float _currentRadius;
+    float _currentRadius;
     private float _mass;
     public Rigidbody rb;
 
@@ -73,7 +70,7 @@ public class Planet : MonoBehaviour
     {
         foreach (var planet in allPlanets)
         {
-            if(planet != this)
+            if(planet != this && planet.gameObject.activeInHierarchy)
             {
                 float sqrDst = (planet.rb.position - rb.position).sqrMagnitude;
                 Vector3 forceDir = (planet.rb.position - rb.position).normalized; 
@@ -86,6 +83,5 @@ public class Planet : MonoBehaviour
     public void UpdatePosition(float timeStep)
     {
         Position += Velocity * timeStep;
-
     }
 }

@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c175333-5fde-4411-ae7d-d25595835838" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CreatePlanet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CreatePlanet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +21,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CreatePlanet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
       </list>
     </option>
@@ -72,6 +77,8 @@
       <workItem from="1640551847391" duration="2747000" />
       <workItem from="1640612254108" duration="3029000" />
       <workItem from="1640881267400" duration="1767000" />
+      <workItem from="1641053405595" duration="2236000" />
+      <workItem from="1641145122448" duration="5395000" />
     </task>
     <servers />
   </component>

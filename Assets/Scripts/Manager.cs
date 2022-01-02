@@ -24,11 +24,13 @@ public class Manager : MonoBehaviour
     {
         for (int i = 0; i < planets.Length; i++)
         {
+            if (!planets[i].gameObject.activeInHierarchy) continue;
             planets[i].UpdateVelocity(planets, TimeStep);
         }
 
         for (int i = 0; i < planets.Length; i++)
         {
+            if (!planets[i].gameObject.activeInHierarchy) continue;
             planets[i].UpdatePosition(TimeStep);
         }
     }
