@@ -22,7 +22,7 @@ public class Planet : MonoBehaviour
 
     private Vector3 _position;
     float _currentRadius;
-    private float _mass;
+    protected float _mass;
     public Rigidbody rb;
 
     public float Mass 
@@ -62,7 +62,7 @@ public class Planet : MonoBehaviour
         }
     }
 
-    private void GenerateRandomProperties()
+    protected void GenerateRandomProperties()
     {
         Mass = Random.Range(minMass, maxMass);
         Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
