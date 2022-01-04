@@ -57,6 +57,7 @@ public class Orbit : MonoBehaviour
         }
     }
 
+    // TODO: DOPYTAJ NA SPOTKANIU O ACTIVE/INACTIVE NA SCENIE ODNOSNIE RAKIETY
     public void SimulatePhysics()
     {
         if (mainObject != null)

@@ -8,12 +8,15 @@ public class Planet : MonoBehaviour
     #region Range
     static public float minMass = 1f;
     static public float maxMass = 2000f;
+    static public float sunMass = 4000f;
 
     static public float minPos = -30f; // x,y,z
     static public float maxPos = 30f;
+    static public Vector3 sunPos = new Vector3(0.0f, 0.0f, 0.0f);
 
     static public float minVelocity = 0f;
     static public float maxVelocity = 10f;
+    static public Vector3 sunVelocity = new Vector3(0.0f, 0.0f, 0.0f);
 
     #endregion
 

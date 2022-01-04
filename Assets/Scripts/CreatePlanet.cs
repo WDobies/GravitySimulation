@@ -1,10 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CreatePlanet : MonoBehaviour
 {
     [SerializeField] private GameObject rocket;
+    [SerializeField] private GameObject sun;
+
+    private void Awake()
+    {
+        sun.GetComponent<Planet>().Mass = Planet.sunMass;
+        sun.GetComponent<Planet>().Position = Planet.sunPos;
+        sun.GetComponent<Planet>().Velocity = Planet.sunVelocity;
+    }
+
     public void Create()
     {
         GameObject planet = ObjectPool.Instance.GetPooledObject();
@@ -17,5 +28,9 @@ public class CreatePlanet : MonoBehaviour
     public void SwitchRocket()
     {
         rocket.SetActive(!rocket.activeInHierarchy);
+    }
+    public void SwitchSun()
+    {
+        sun.SetActive(!sun.activeInHierarchy);
     }
 }
