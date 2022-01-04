@@ -28,6 +28,7 @@ public class CreatePlanet : MonoBehaviour
     public void SwitchRocket()
     {
         rocket.SetActive(!rocket.activeInHierarchy);
+        Manager.RefreshPlanetArray();
     }
     public void SwitchSun()
     {
