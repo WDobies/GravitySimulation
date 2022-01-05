@@ -3,9 +3,14 @@ using UnityEngine.UI;
 
 public class ButtonImage : MonoBehaviour
 {
-    public Button button;
+    public Button pauseButton;
     public Sprite playSprite;
     public Sprite stopSprite;
+
+    public Button uiHideButton;
+    public GameObject editPanel;
+    public Sprite hideSprite;
+    public Sprite showSprite;
 
     private float _timeStep;
     private Orbit _orbit;
@@ -15,20 +20,33 @@ public class ButtonImage : MonoBehaviour
         _timeStep = Manager.TimeStep;
     }
 
-    public void ChangeImage()
+    public void ChangePauseImage()
     {
-        if(button.image.sprite == playSprite)
+        if(pauseButton.image.sprite == playSprite)
         {
-            button.image.sprite = stopSprite;
+            pauseButton.image.sprite = stopSprite;
             Manager.TimeStep = 0;
             Orbit.mainPhysics = false;
         }
         else
         {
-            button.image.sprite = playSprite;
+            pauseButton.image.sprite = playSprite;
             Manager.TimeStep = _timeStep;
             Orbit.mainPhysics = true;
         }
-        
+    }
+
+    public void ChangeUIHideImage()
+    {
+        if (uiHideButton.image.sprite == hideSprite)
+        {
+            editPanel.gameObject.SetActive(false);
+            uiHideButton.image.sprite = showSprite;
+        }
+        else
+        {
+            editPanel.gameObject.SetActive(true);
+            uiHideButton.image.sprite = hideSprite;
+        }
     }
 }
