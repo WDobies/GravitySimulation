@@ -29,6 +29,17 @@ public class SelectionManager : MonoBehaviour
 
     private void Start()
     {
+        // set input fields listeners
+        massInput.onValueChanged.AddListener(delegate {OnMassInputChanged();});
+        
+        xPositionInput.onValueChanged.AddListener(delegate {OnXPosInputChanged();});
+        yPositionInput.onValueChanged.AddListener(delegate {OnYPosInputChanged();});
+        zPositionInput.onValueChanged.AddListener(delegate {OnZPosInputChanged();});
+        
+        xVelocityInput.onValueChanged.AddListener(delegate {OnXVelocityInputChanged();});
+        yVelocityInput.onValueChanged.AddListener(delegate {OnYVelocityInputChanged();});
+        zVelocityInput.onValueChanged.AddListener(delegate {OnZVelocityInputChanged();});
+        
         // set sliders min and max values here in code so there is no need to manually set it every time we change ranges
         // register listeners for sliders
         // mass range
@@ -158,29 +169,104 @@ public class SelectionManager : MonoBehaviour
     public void OnMassSliderChanged()
     {
         massInput.SetTextWithoutNotify(massSlider.value.ToString());
+        currentPlanet.Mass = massSlider.value;
+        Orbit.applied = true;
+    }
+
+    public void OnMassInputChanged()
+    {
+        currentPlanet.Mass = float.Parse(massInput.text);
+        Orbit.applied = true;
     }
     public void OnXPosSliderChanged()
     {
         xPositionInput.SetTextWithoutNotify(xPositionSlider.value.ToString());
+        Vector3 pos = currentPlanet.Position;
+        pos[0] = xPositionSlider.value;
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
+    }
+
+    public void OnXPosInputChanged()
+    {
+        Vector3 pos = currentPlanet.Position;
+        pos[0] = float.Parse(xPositionInput.text);
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
     }
     public void OnYPosSliderChanged()
     {
         yPositionInput.SetTextWithoutNotify(yPositionSlider.value.ToString());
+        Vector3 pos = currentPlanet.Position;
+        pos[1] = yPositionSlider.value;
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
+    }
+    public void OnYPosInputChanged()
+    {
+        Vector3 pos = currentPlanet.Position;
+        pos[1] = float.Parse(yPositionInput.text);
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
     }
     public void OnZPosSliderChanged()
     {
         zPositionInput.SetTextWithoutNotify(zPositionSlider.value.ToString());
+        Vector3 pos = currentPlanet.Position;
+        pos[2] = zPositionSlider.value;
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
+    }
+    public void OnZPosInputChanged()
+    {
+        Vector3 pos = currentPlanet.Position;
+        pos[2] = float.Parse(zPositionInput.text);
+        currentPlanet.Position = pos;
+        Orbit.applied = true;
     }
     public void OnXVelocitySliderChanged()
     {
         xVelocityInput.SetTextWithoutNotify(xVelocitySlider.value.ToString());
+        Vector3 vel = currentPlanet.Position;
+        vel[0] = xVelocitySlider.value;
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
+    }
+    public void OnXVelocityInputChanged()
+    {
+        Vector3 vel = currentPlanet.Velocity;
+        vel[0] = float.Parse(xVelocityInput.text);
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
     }
     public void OnYVelocitySliderChanged()
     {
         yVelocityInput.SetTextWithoutNotify(yVelocitySlider.value.ToString());
+        Vector3 vel = currentPlanet.Position;
+        vel[1] = yVelocitySlider.value;
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
+    }
+    public void OnYVelocityInputChanged()
+    {
+        Vector3 vel = currentPlanet.Velocity;
+        vel[1] = float.Parse(yVelocityInput.text);
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
     }
     public void OnZVelocitySliderChanged()
     {
         zVelocityInput.SetTextWithoutNotify(zVelocitySlider.value.ToString());
+        Vector3 vel = currentPlanet.Position;
+        vel[2] = zVelocitySlider.value;
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
+    }
+    public void OnZVelocityInputChanged()
+    {
+        Vector3 vel = currentPlanet.Velocity;
+        vel[2] = float.Parse(zVelocityInput.text);
+        currentPlanet.Velocity = vel;
+        Orbit.applied = true;
     }
 }

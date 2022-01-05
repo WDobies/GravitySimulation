@@ -9,12 +9,14 @@
         <e p="Scripts" t="Include">
           <e p="ButtonImage.cs" t="Include" />
           <e p="CameraMovment.cs" t="Include" />
+          <e p="CameraReset.cs" t="Include" />
           <e p="CreatePlanet.cs" t="Include" />
           <e p="EditPanelScript.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="ObjectPool.cs" t="Include" />
           <e p="Orbit.cs" t="Include" />
           <e p="Planet.cs" t="Include" />
+          <e p="ResetScene.cs" t="Include" />
           <e p="Rocket.cs" t="Include" />
           <e p="SelectionManager.cs" t="Include" />
         </e>
