@@ -227,7 +227,7 @@ public class SelectionManager : MonoBehaviour
     public void OnXVelocitySliderChanged()
     {
         xVelocityInput.SetTextWithoutNotify(xVelocitySlider.value.ToString());
-        Vector3 vel = currentPlanet.Position;
+        Vector3 vel = currentPlanet.Velocity;
         vel[0] = xVelocitySlider.value;
         currentPlanet.Velocity = vel;
         Orbit.applied = true;
@@ -242,7 +242,7 @@ public class SelectionManager : MonoBehaviour
     public void OnYVelocitySliderChanged()
     {
         yVelocityInput.SetTextWithoutNotify(yVelocitySlider.value.ToString());
-        Vector3 vel = currentPlanet.Position;
+        Vector3 vel = currentPlanet.Velocity;
         vel[1] = yVelocitySlider.value;
         currentPlanet.Velocity = vel;
         Orbit.applied = true;
@@ -257,7 +257,7 @@ public class SelectionManager : MonoBehaviour
     public void OnZVelocitySliderChanged()
     {
         zVelocityInput.SetTextWithoutNotify(zVelocitySlider.value.ToString());
-        Vector3 vel = currentPlanet.Position;
+        Vector3 vel = currentPlanet.Velocity;
         vel[2] = zVelocitySlider.value;
         currentPlanet.Velocity = vel;
         Orbit.applied = true;
