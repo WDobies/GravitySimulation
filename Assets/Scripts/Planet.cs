@@ -90,7 +90,7 @@ public class Planet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (this.gameObject.name != "sun")
+        if (this.gameObject.name != "sun" && Manager.TimeStep != 0)
         {
             if (other.gameObject.name == "sun")
             {
