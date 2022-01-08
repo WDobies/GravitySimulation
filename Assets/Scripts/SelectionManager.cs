@@ -176,6 +176,7 @@ public class SelectionManager : MonoBehaviour
     public void OnMassInputChanged()
     {
         currentPlanet.Mass = float.Parse(massInput.text);
+        massSlider.value = currentPlanet.Mass;
         Orbit.applied = true;
     }
     public void OnXPosSliderChanged()
@@ -192,6 +193,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 pos = currentPlanet.Position;
         pos[0] = float.Parse(xPositionInput.text);
         currentPlanet.Position = pos;
+        xPositionSlider.value = pos[0];
         Orbit.applied = true;
     }
     public void OnYPosSliderChanged()
@@ -207,6 +209,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 pos = currentPlanet.Position;
         pos[1] = float.Parse(yPositionInput.text);
         currentPlanet.Position = pos;
+        yPositionSlider.value = pos[1];
         Orbit.applied = true;
     }
     public void OnZPosSliderChanged()
@@ -222,6 +225,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 pos = currentPlanet.Position;
         pos[2] = float.Parse(zPositionInput.text);
         currentPlanet.Position = pos;
+        zPositionSlider.value = pos[2];
         Orbit.applied = true;
     }
     public void OnXVelocitySliderChanged()
@@ -237,6 +241,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 vel = currentPlanet.Velocity;
         vel[0] = float.Parse(xVelocityInput.text);
         currentPlanet.Velocity = vel;
+        xVelocitySlider.value = vel[0];
         Orbit.applied = true;
     }
     public void OnYVelocitySliderChanged()
@@ -252,6 +257,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 vel = currentPlanet.Velocity;
         vel[1] = float.Parse(yVelocityInput.text);
         currentPlanet.Velocity = vel;
+        yVelocitySlider.value = vel[1];
         Orbit.applied = true;
     }
     public void OnZVelocitySliderChanged()
@@ -267,6 +273,7 @@ public class SelectionManager : MonoBehaviour
         Vector3 vel = currentPlanet.Velocity;
         vel[2] = float.Parse(zVelocityInput.text);
         currentPlanet.Velocity = vel;
+        zVelocitySlider.value = vel[2];
         Orbit.applied = true;
     }
 }

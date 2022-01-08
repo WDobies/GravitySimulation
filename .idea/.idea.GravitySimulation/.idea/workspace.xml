@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9c175333-5fde-4411-ae7d-d25595835838" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ButtonImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +20,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CreatePlanet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ButtonImage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" />
       </list>
     </option>
   </component>
