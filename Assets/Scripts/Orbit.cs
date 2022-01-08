@@ -32,8 +32,7 @@ public class Orbit : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("FIXED DELTA TIME:" + Time.fixedDeltaTime);
-        SceneManager.GetActiveScene().GetPhysicsScene().Simulate(Manager.TimeStep);
+        SceneManager.GetActiveScene().GetPhysicsScene().Simulate(0.01f);
         if (mainPhysics)
         {
             _lineRenderer.enabled = false;
@@ -78,16 +77,16 @@ public class Orbit : MonoBehaviour
 
             for (int i = 0; i < _lineRenderer.positionCount; i++)
             {
-                _parallelPhysicsScene.Simulate(Manager.TimeStep);
+                _parallelPhysicsScene.Simulate(0.01f);
 
                 for (int j = 0; j < simulationPlanets.Length; j++)
                 {
-                    simulationPlanets[j].UpdateVelocity(simulationPlanets, Manager.TimeStep);
+                    simulationPlanets[j].UpdateVelocity(simulationPlanets, 0.01f);
                 }
 
                 for (int j = 0; j < simulationPlanets.Length; j++)
                 {
-                    simulationPlanets[j].UpdatePosition(Manager.TimeStep);
+                    simulationPlanets[j].UpdatePosition(0.01f);
                 }
 
                 for (int k = 0; k < simulationPlanets.Length; k++)

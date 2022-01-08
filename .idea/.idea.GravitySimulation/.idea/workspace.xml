@@ -22,8 +22,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ButtonImage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" />
       </list>
     </option>
   </component>
@@ -80,7 +80,7 @@
       <workItem from="1641314659867" duration="3057000" />
       <workItem from="1641327339384" duration="1838000" />
       <workItem from="1641412358689" duration="6066000" />
-      <workItem from="1641669718969" duration="3576000" />
+      <workItem from="1641669718969" duration="4310000" />
     </task>
     <servers />
   </component>
