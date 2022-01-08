@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -44,7 +45,7 @@ public class Planet : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
         rb.mass = _mass;
@@ -85,5 +86,26 @@ public class Planet : MonoBehaviour
     public void UpdatePosition(float timeStep)
     {
         Position += Velocity * timeStep;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (this.gameObject.name != "sun")
+        {
+            if (other.gameObject.name == "sun")
+            {
+                // If planet collides with sun, deactivate it
+                this.gameObject.SetActive(false);
+            }
+            else if (other.gameObject.GetComponent<Planet>() != null)
+            {
+                // If planet collides with planet, mass of the greater planet is being increased
+                if (this.Mass > other.gameObject.GetComponent<Planet>().Mass)
+                {
+                    this.Mass += other.gameObject.GetComponent<Planet>().Mass * (float)0.6;
+                    other.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }
