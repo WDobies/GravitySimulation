@@ -38,6 +38,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
+        Time.fixedDeltaTime = TimeStep;
         _instance = this;
         RefreshPlanetArray();
     }
