@@ -15,12 +15,12 @@ public class Planet : MonoBehaviour
     static public float rocketMass = 0.01f;
     static public float sunMass = 2500000f;
 
-    static public float minPos = -400f; // x,y,z
-    static public float maxPos = 400f;
+    static public float minPos = -350f; // x,y,z
+    static public float maxPos = 350f;
     static public Vector3 sunPos = new Vector3(0.0f, 0.0f, 0.0f);
 
-    static public float minVelocity = -100f;
-    static public float maxVelocity = 100f;
+    static public float minVelocity = -50f;
+    static public float maxVelocity = 50f;
     static public Vector3 sunVelocity = new Vector3(0.0f, 0.0f, 0.0f);
 
     #endregion
@@ -78,11 +78,12 @@ public class Planet : MonoBehaviour
         float radius;
         
         if(gameObject.name == "sun")
-            radius = 12;
+            radius = 11;
         else
         {
-            radius = Mathf.InverseLerp(1, 2000, Mass) * 10;
-            if (radius < 2) radius = 1.5f;
+            radius = Mathf.InverseLerp(minMass, maxMass, Mass) * 10;
+            if (radius < 1.5) radius = 1.5f;
+            if (radius > 7) radius = 7;
         }
 
         if (radius != _currentRadius)

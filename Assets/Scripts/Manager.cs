@@ -8,7 +8,7 @@ public class Manager : MonoBehaviour
     private static Manager _instance;
     public static Planet[] planets;
 
-    public static float GravityConstant = 0.00067f /** (float)Math.Pow(10, -11)*/;
+    public static float GravityConstant = 0.0067f /** (float)Math.Pow(10, -11)*/;
     public static float TimeStep = 0.01f;
 
     public static Manager Instance 
