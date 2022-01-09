@@ -6,12 +6,16 @@ public class Planet : MonoBehaviour
 {
     //TO FIX
     #region Range
-    static public float minMass = 1f;
-    static public float maxMass = 2000f;
-    static public float sunMass = 400000f;
 
-    static public float minPos = -200f; // x,y,z
-    static public float maxPos = 200f;
+    static public float maxInScreenX = 40;
+    static public float maxInScreenY = 24;
+    
+    static public float minMass = 0.0001f;
+    static public float maxMass = 30000f;
+    static public float sunMass = 9000000f;
+
+    static public float minPos = -400f; // x,y,z
+    static public float maxPos = 400f;
     static public Vector3 sunPos = new Vector3(0.0f, 0.0f, 0.0f);
 
     static public float minVelocity = -100f;
@@ -54,7 +58,16 @@ public class Planet : MonoBehaviour
 
     private void Update()
     {
-        float radius = Mathf.InverseLerp(1, 2000, Mass) * 10;
+        float radius;
+        
+        if(gameObject.name == "sun")
+            radius = 12;
+        else
+        {
+            radius = Mathf.InverseLerp(1, 2000, Mass) * 10;
+            if (radius < 2) radius = 1.5f;
+        }
+
         if (radius != _currentRadius)
         {
             _currentRadius = radius;
@@ -65,7 +78,7 @@ public class Planet : MonoBehaviour
     protected void GenerateRandomProperties()
     {
         Mass = Random.Range(minMass, maxMass);
-        Position = new Vector3(Random.Range(minPos, maxPos), Random.Range(minPos, maxPos), Random.Range(minPos, maxPos));
+        Position = new Vector3(Random.Range(-maxInScreenX, maxInScreenX), Random.Range(-maxInScreenY, maxInScreenY), Random.Range(-maxInScreenX, maxInScreenX));
         Velocity = Vector3.zero; //to fix
     }
 
@@ -96,15 +109,6 @@ public class Planet : MonoBehaviour
             {
                 // If planet collides with sun, deactivate it
                 this.gameObject.SetActive(false);
-            }
-            else if (other.gameObject.GetComponent<Planet>() != null)
-            {
-                // If planet collides with planet, mass of the greater planet is being increased
-                if (this.Mass > other.gameObject.GetComponent<Planet>().Mass)
-                {
-                    this.Mass += other.gameObject.GetComponent<Planet>().Mass * (float)0.6;
-                    other.gameObject.SetActive(false);
-                }
             }
         }
     }

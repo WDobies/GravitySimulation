@@ -20,7 +20,7 @@ public class Orbit : MonoBehaviour
     {
         Physics.autoSimulation = false;
         _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = 500;
+        _lineRenderer.positionCount = 2000;
 
         CreateSceneParameters createSceneParameters = new CreateSceneParameters(LocalPhysicsMode.Physics3D);
         _parallelScene = SceneManager.CreateScene("ParallelScene", createSceneParameters);
