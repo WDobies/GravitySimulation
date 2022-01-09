@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c175333-5fde-4411-ae7d-d25595835838" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GravitySimulation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Planet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,13 +16,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CreatePlanet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ButtonImage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Orbit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SelectionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Planet.cs" />
       </list>
     </option>
   </component>
@@ -83,7 +80,7 @@
       <workItem from="1641327339384" duration="1838000" />
       <workItem from="1641412358689" duration="6066000" />
       <workItem from="1641669718969" duration="4310000" />
-      <workItem from="1641752582050" duration="5670000" />
+      <workItem from="1641752582050" duration="9692000" />
     </task>
     <servers />
   </component>

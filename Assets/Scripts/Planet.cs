@@ -12,7 +12,8 @@ public class Planet : MonoBehaviour
     
     static public float minMass = 0.0001f;
     static public float maxMass = 30000f;
-    static public float sunMass = 9000000f;
+    static public float rocketMass = 0.01f;
+    static public float sunMass = 2500000f;
 
     static public float minPos = -400f; // x,y,z
     static public float maxPos = 400f;
@@ -23,6 +24,11 @@ public class Planet : MonoBehaviour
     static public Vector3 sunVelocity = new Vector3(0.0f, 0.0f, 0.0f);
 
     #endregion
+    
+    [SerializeField] private bool isExample = false;
+    [SerializeField] private float e_Mass;
+    [SerializeField] private Vector3 e_pos;
+    [SerializeField] private Vector3 e_velocity;
 
     private Vector3 _position;
     float _currentRadius;
@@ -51,9 +57,20 @@ public class Planet : MonoBehaviour
 
     private void OnEnable()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.mass = _mass;
-        GenerateRandomProperties();
+        if (!isExample)
+        {
+            rb = GetComponent<Rigidbody>();
+            rb.mass = _mass;
+            GenerateRandomProperties();
+        }
+        else
+        {
+            rb = GetComponent<Rigidbody>();
+            rb.mass = _mass;
+            Mass = e_Mass;
+            Position = e_pos;
+            Velocity = e_velocity;
+        }
     }
 
     private void Update()
@@ -77,7 +94,11 @@ public class Planet : MonoBehaviour
 
     protected void GenerateRandomProperties()
     {
-        Mass = Random.Range(minMass, maxMass);
+        if (gameObject.name == "rocket")
+            Mass = rocketMass;
+        else 
+            Mass = Random.Range(minMass, maxMass);
+        
         Position = new Vector3(Random.Range(-maxInScreenX, maxInScreenX), Random.Range(-maxInScreenY, maxInScreenY), Random.Range(-maxInScreenX, maxInScreenX));
         Velocity = Vector3.zero; //to fix
     }
